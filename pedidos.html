@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos Especiais - Padaria Soares | Encomendas Personalizadas</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <img src="imagens/Logo/Padaria-Soares.png" alt="Logotipo da Padaria Soares" class="logo-img">
+            <h1>Padaria Soares: Tradição, Sabor e Qualidade</h1>
+        </div>
+        
+        <nav aria-label="Navegação Principal do Site">
+            <ul class="nav-top">
+                <li><a href="index.html" aria-label="Voltar para a página inicial">Início</a></li>
+                <li><a href="index.html#cardapio">Cardápio</a></li>
+                <li><a href="index.html#galeria-produtos">Nossos Produtos</a></li>
+                <li><a href="index.html#sobre-nos">Nossa História</a></li>
+                <li><a href="index.html#horarios">Horários</a></li>
+            </ul>
+            <ul class="nav-bottom">
+                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="contato.html">Fale Conosco</a></li>
+                <li><a href="pedidos.html" class="active">Pedidos Especiais</a></li>
+                <li><a href="feedback.html">Deixe seu Feedback</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Pedidos Especiais</h2>
+                <p>Faça sua encomenda personalizada! Bolos para festas, tortas exclusivas, salgados para eventos e muito mais.</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, var(--cor-destaque), var(--cor-secundaria)); color: white; padding: 1.5rem; border-radius: var(--borda-arredondada); margin-bottom: 2rem; text-align: center;">
+                <h3 style="color: white; margin-bottom: 0.5rem;">🎉 Ofertas Especiais para Encomendas</h3>
+                <p style="margin: 0; font-size: 1.1rem;">10% de desconto em pedidos acima de R$ 100,00</p>
+            </div>
+
+            <form class="form-padaria" id="form-pedidos">
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">👤 Dados do Cliente</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome-pedido" class="form-label required">Nome Completo</label>
+                            <input type="text" id="nome-pedido" class="form-input" placeholder="Seu nome completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone-pedido" class="form-label required">Telefone</label>
+                            <input type="tel" id="telefone-pedido" class="form-input" placeholder="(11) 99999-9999" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-pedido" class="form-label required">E-mail</label>
+                        <input type="email" id="email-pedido" class="form-input" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">🎂 Detalhes do Pedido</legend>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Tipo de Produto</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="tipo-bolo" name="tipoProduto" value="bolo" required>
+                                <label for="tipo-bolo" class="radio-label">🎂 Bolo Personalizado</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="tipo-torta" name="tipoProduto" value="torta">
+                                <label for="tipo-torta" class="radio-label">🥧 Torta Especial</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="tipo-salgados" name="tipoProduto" value="salgados">
+                                <label for="tipo-salgados" class="radio-label">🥟 Salgados para Eventos</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="tipo-paes" name="tipoProduto" value="paes">
+                                <label for="tipo-paes" class="radio-label">🍞 Pães Especiais</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="tipo-doces" name="tipoProduto" value="doces">
+                                <label for="tipo-doces" class="radio-label">🍰 Doces Finos</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sabor-recheio" class="form-label required">Sabor/Recheio Principal</label>
+                            <select id="sabor-recheio" class="form-select" required>
+                                <option value="">Selecione um sabor</option>
+                                <optgroup label="Bolos e Tortas">
+                                    <option value="chocolate">🍫 Chocolate</option>
+                                    <option value="morango">🍓 Morango</option>
+                                    <option value="baunilha">🌿 Baunilha</option>
+                                    <option value="limao">🍋 Limão Siciliano</option>
+                                    <option value="ninho">🥛 Leite Ninho</option>
+                                    <option value="abacaxi">🍍 Abacaxi</option>
+                                    <option value="coco">🥥 Coco</option>
+                                    <option value="prestigio">🥥🍫 Prestígio</option>
+                                    <option value="red-velvet">🔴 Red Velvet</option>
+                                </optgroup>
+                                <optgroup label="Salgados">
+                                    <option value="frango">🍗 Frango</option>
+                                    <option value="queijo">🧀 Queijo</option>
+                                    <option value="palmito">🌴 Palmito</option>
+                                    <option value="carne">🥩 Carne</option>
+                                    <option value="camarao">🦐 Camarão</option>
+                                </optgroup>
+                                <option value="outros">🎨 Outros (especificar nas observações)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label required">Tamanho/Servindo</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="tamanhoPequeno" name="tamanhoPedido" value="pequeno" required>
+                                    <label for="tamanhoPequeno" class="radio-label">Pequeno (8-12 fatias)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="tamanhoMedio" name="tamanhoPedido" value="medio">
+                                    <label for="tamanhoMedio" class="radio-label">Médio (15-20 fatias)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="tamanhoGrande" name="tamanhoPedido" value="grande">
+                                    <label for="tamanhoGrande" class="radio-label">Grande (25-30 fatias)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="tamanhoExtra" name="tamanhoPedido" value="extra">
+                                    <label for="tamanhoExtra" class="radio-label">Extra (40+ fatias)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dataEntrega" class="form-label required">Data de Entrega/Retirada</label>
+                     <input type="date" id="dataEntrega" class="form-input" min="2024-03-15" required>
+                        <div class="form-hint">Pedidos especiais requerem pelo menos 48h de antecedência</div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">🎨 Personalização e Observações</legend>
+                    
+                    <div class="form-group">
+                        <label for="observacoes-pedido" class="form-label">Instruções Especiais</label>
+                        <textarea id="observacoes-pedido" class="form-textarea" rows="5" 
+                                  placeholder="Ex: Tema da festa, cores específicas, restrições alimentares (sem glúten, sem lactose), decoração especial, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orcamento-maximo" class="form-label">Orçamento Máximo Pretendido (R$)</label>
+                        <input type="number" id="orcamento-maximo" class="form-input" min="0" step="0.01" placeholder="Ex: 150.00">
+                        <div class="form-hint">Nos ajude a criar a melhor opção dentro do seu orçamento</div>
+                    </div>
+                </fieldset>
+
+                <div class="pedido-preview">
+                    <h3>📋 Resumo do Seu Pedido</h3>
+                    <div class="preview-details">
+                        <div class="preview-item">
+                            <span>Tipo:</span>
+                            <span id="preview-tipo">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Sabor:</span>
+                            <span id="preview-sabor">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Tamanho:</span>
+                            <span id="preview-tamanho">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Data:</span>
+                            <span id="preview-data">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Orçamento:</span>
+                            <span id="preview-orcamento">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="index.html" class="btn-form btn-back">Cancelar</a>
+                    <button type="submit" class="btn-form btn-submit">Solicitar Orçamento</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-primary color-neutra text-center padding-md margin-top-xl">
+        <p>&copy; 2025 Padaria Soares. Todos os direitos reservados.</p>
+        <p class="margin-top-xs"><a href="index.html" class="color-destaque">← Voltar à Página Inicial</a></p>
+    </footer>
+
+  <!-- No final de CADA página HTML, substitua todo o JavaScript por: -->
+<script src="js/script.js"></script>
+</body>
+</html>

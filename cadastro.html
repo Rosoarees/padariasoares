@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Padaria Soares | Clube de Vantagens</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header (mantido igual) -->
+    <header>
+        <div class="header-top">
+            <img src="imagens/Logo/Padaria-Soares.png" alt="Logotipo da Padaria Soares" class="logo-img">
+            <h1>Padaria Soares: Tradição, Sabor e Qualidade</h1>
+        </div>
+        
+        <nav aria-label="Navegação Principal do Site">
+            <ul class="nav-top">
+                <li><a href="index.html" aria-label="Voltar para a página inicial">Início</a></li>
+                <li><a href="index.html#cardapio">Cardápio</a></li>
+                <li><a href="index.html#galeria-produtos">Nossos Produtos</a></li>
+                <li><a href="index.html#sobre-nos">Nossa História</a></li>
+                <li><a href="index.html#horarios">Horários</a></li>
+            </ul>
+            <ul class="nav-bottom">
+                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="contato.html">Fale Conosco</a></li>
+                <li><a href="pedidos.html">Pedidos Especiais</a></li>
+                <li><a href="feedback.html">Deixe seu Feedback</a></li>
+                <li><a href="cadastro.html" class="active">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Junte-se ao Clube de Vantagens</h2>
+                <p>Faça seu cadastro e receba promoções exclusivas, novidades e informações sobre seus produtos favoritos da Padaria Soares!</p>
+            </div>
+
+            <div class="cadastro-benefits">
+                <h3>🎁 Vantagens Exclusivas para Membros:</h3>
+                <ul>
+                    <li>15% de desconto no primeiro pedido</li>
+                    <li>Acesso antecipado a promoções</li>
+                    <li>Receitas exclusivas e dicas especiais</li>
+                    <li>Ofertas personalizadas baseadas nas suas preferências</li>
+                    <li>Brindes no seu aniversário</li>
+                </ul>
+            </div>
+
+            <form class="form-padaria" id="form-cadastro">
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">👤 Dados Pessoais</legend>
+                    
+                    <div class="form-group">
+                        <label for="nomeCompleto" class="form-label required">Nome Completo</label>
+                        <input type="text" id="nomeCompleto" class="form-input" placeholder="Seu nome completo" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                            <input type="date" id="dataNascimento" class="form-input">
+                            <div class="form-hint">Para ganhar seu brinde de aniversário!</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Gênero</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="masculino" name="sexo" value="masculino">
+                                    <label for="masculino" class="radio-label">Masculino</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="feminino" name="sexo" value="feminino">
+                                    <label for="feminino" class="radio-label">Feminino</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="outro" name="sexo" value="outro">
+                                    <label for="outro" class="radio-label">Outro</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emailCadastro" class="form-label required">E-mail</label>
+                            <input type="email" id="emailCadastro" class="form-input" placeholder="seu.email@exemplo.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefoneCadastro" class="form-label required">Telefone</label>
+                            <input type="tel" id="telefoneCadastro" class="form-input" placeholder="(11) 99999-9999" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">📍 Endereço</legend>
+                    
+                    <div class="form-group">
+                        <label for="ruaCadastro" class="form-label required">Rua/Avenida</label>
+                        <input type="text" id="ruaCadastro" class="form-input" placeholder="Nome da rua/avenida" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="numeroCadastro" class="form-label required">Número</label>
+                            <input type="text" id="numeroCadastro" class="form-input" placeholder="Ex: 123" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bairroCadastro" class="form-label required">Bairro</label>
+                            <input type="text" id="bairroCadastro" class="form-input" placeholder="Seu bairro" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cepCadastro" class="form-label required">CEP</label>
+                        <input type="text" id="cepCadastro" class="form-input" placeholder="00000-000" required>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">🥖 Preferências de Produtos</legend>
+                    <p class="form-hint">Selecione os produtos que mais te interessam para receber ofertas personalizadas:</p>
+                    
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="preferencia-paes" name="preferenciaProduto" value="paes-artesanais">
+                            <label for="preferencia-paes" class="checkbox-label">Pães Artesanais</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="preferencia-salgados" name="preferenciaProduto" value="salgados">
+                            <label for="preferencia-salgados" class="checkbox-label">Salgados</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="preferencia-diet" name="preferenciaProdutos" value="produtos-diet-light">
+                            <label for="preferencia-diet" class="checkbox-label">Produtos Diet/Light</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="preferencia-integrais" name="preferenciaProduto" value="produtos-integrais">
+                            <label for="preferencia-integrais" class="checkbox-label">Produtos Integrais</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="preferencia-bolos" name="preferenciaProduto" value="bolos-doces">
+                            <label for="preferencia-bolos" class="checkbox-label">Bolos e Doces</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="preferencia-tortas" name="preferenciaProduto" value="tortas-especiais">
+                            <label for="preferencia-tortas" class="checkbox-label">Tortas Especiais</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">📋 Termos e Condições</legend>
+                    
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="aceitaPromocoes" name="aceitaPromocoes" value="sim" required>
+                            <label for="aceitaPromocoes" class="checkbox-label">
+                                Aceito receber promoções, novidades e comunicações por e-mail
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="aceitaTermos" name="aceitaTermos" value="sim" required>
+                            <label for="aceitaTermos" class="checkbox-label">
+                                Declaro que li e aceito os <a href="#" style="color: var(--cor-destaque);">Termos de Uso</a> e <a href="#" style="color: var(--cor-destaque);">Política de Privacidade</a> da Padaria Soares
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions">
+                    <a href="index.html" class="btn-form btn-back">Cancelar</a>
+                    <button type="submit" class="btn-form btn-submit">Finalizar Cadastro</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-primary color-neutra text-center padding-md margin-top-xl">
+        <p>&copy; 2025 Padaria Soares. Todos os direitos reservados.</p>
+        <p class="margin-top-xs"><a href="index.html" class="color-destaque">← Voltar à Página Inicial</a></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Padaria Soares | Sua Opinião é Importante</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <img src="imagens/Logo/Padaria-Soares.png" alt="Logotipo da Padaria Soares" class="logo-img">
+            <h1>Padaria Soares: Tradição, Sabor e Qualidade</h1>
+        </div>
+        
+        <nav aria-label="Navegação Principal do Site">
+            <ul class="nav-top">
+                <li><a href="index.html" aria-label="Voltar para a página inicial">Início</a></li>
+                <li><a href="index.html#cardapio">Cardápio</a></li>
+                <li><a href="index.html#galeria-produtos">Nossos Produtos</a></li>
+                <li><a href="index.html#sobre-nos">Nossa História</a></li>
+                <li><a href="index.html#horarios">Horários</a></li>
+            </ul>
+            <ul class="nav-bottom">
+                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="contato.html">Fale Conosco</a></li>
+                <li><a href="pedidos.html">Pedidos Especiais</a></li>
+                <li><a href="feedback.html" class="active">Deixe seu Feedback</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Deixe seu Feedback</h2>
+                <p>Sua opinião é fundamental para continuarmos oferecendo o melhor! Conte-nos sobre sua experiência.</p>
+            </div>
+
+            <form class="form-padaria" id="form-feedback">
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">👤 Sobre Você (Opcional)</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nomeFeedback" class="form-label">Nome</label>
+                            <input type="text" id="nomeFeedback" class="form-input" placeholder="Seu nome (opcional)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emailFeedback" class="form-label">E-mail</label>
+                            <input type="email" id="emailFeedback" class="form-input" placeholder="seu.email@exemplo.com (opcional)">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">⭐ Sua Avaliação</legend>
+                    
+                    <div class="form-group">
+                        <label for="produtoServico" class="form-label required">O que você está avaliando?</label>
+                        <select id="produtoServico" class="form-select" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="atendimento">🤵 Atendimento</option>
+                            <option value="ambiente">🏪 Ambiente e Limpeza</option>
+                            <option value="paes-tradicionais">🥖 Pães Tradicionais</option>
+                            <option value="paes-especiais">🍞 Pães Especiais</option>
+                            <option value="doces-bolos">🎂 Doces e Bolos</option>
+                            <option value="salgados">🥟 Salgados</option>
+                            <option value="tortas">🥧 Tortas</option>
+                            <option value="bebidas">☕ Bebidas</option>
+                            <option value="precos">💰 Preços</option>
+                            <option value="entrega">🚚 Entrega</option>
+                            <option value="geral">🌟 Experiência Geral</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">Avaliação Geral</label>
+                        <div class="rating-group">
+                            <div class="rating-option">
+                                <input type="radio" id="avaliacaoExcelente" name="avaliacaoGeral" value="5" required>
+                                <div class="rating-content">
+                                    <span class="rating-stars">⭐️⭐️⭐️⭐️⭐️</span>
+                                    <span class="radio-label">Excelente</span>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-option">
+                                <input type="radio" id="avaliacaoMuitoBom" name="avaliacaoGeral" value="4">
+                                <div class="rating-content">
+                                    <span class="rating-stars">⭐️⭐️⭐️⭐️</span>
+                                    <span class="radio-label">Muito Bom</span>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-option">
+                                <input type="radio" id="avaliacaoBom" name="avaliacaoGeral" value="3">
+                                <div class="rating-content">
+                                    <span class="rating-stars">⭐️⭐️⭐️</span>
+                                    <span class="radio-label">Bom</span>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-option">
+                                <input type="radio" id="avaliacaoRegular" name="avaliacaoGeral" value="2">
+                                <div class="rating-content">
+                                    <span class="rating-stars">⭐️⭐️</span>
+                                    <span class="radio-label">Regular</span>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-option">
+                                <input type="radio" id="avaliacaoRuim" name="avaliacaoGeral" value="1">
+                                <div class="rating-content">
+                                    <span class="rating-stars">⭐️</span>
+                                    <span class="radio-label">Ruim</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comentariosFeedback" class="form-label">Comentários Detalhados</label>
+                        <textarea id="comentariosFeedback" class="form-textarea" rows="5" 
+                                  placeholder="Conte-nos mais sobre sua experiência. O que mais gostou? O que podemos melhorar?"></textarea>
+                        <div class="form-hint">Seu feedback detalhado nos ajuda a melhorar cada vez mais!</div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-fieldset">
+                    <legend class="form-legend">📢 Permissões</legend>
+                    
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="recomendarAmigos" name="recomendarAmigos" value="sim">
+                            <label for="recomendarAmigos" class="checkbox-label">
+                                Recomendaria a Padaria Soares para amigos e familiares
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="autorizarPublicacao" name="autorizarPublicacao" value="sim">
+                            <label for="autorizarPublicacao" class="checkbox-label">
+                                Autorizo a publicação do meu depoimento (anonimizado) em nosso site e redes sociais
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contatoRetorno" name="contatoRetorno" value="sim">
+                            <label for="contatoRetorno" class="checkbox-label">
+                                Posso ser contactado para esclarecer dúvidas sobre meu feedback
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions">
+                    <a href="index.html" class="btn-form btn-back">Cancelar</a>
+                    <button type="submit" class="btn-form btn-submit">Enviar Feedback</button>
+                </div>
+            </form>
+
+            <div style="margin-top: 3rem; text-align: center; background: rgba(139, 69, 19, 0.05); padding: 2rem; border-radius: var(--borda-arredondada);">
+                <h3 style="color: var(--cor-primaria); margin-bottom: 1rem;">💝 Agradecemos seu Feedback!</h3>
+                <p style="margin-bottom: 1rem;">Cada comentário nos ajuda a crescer e melhorar. Como agradecimento, apresente este comprovante na loja e ganhe:</p>
+                <div style="background: white; padding: 1rem; border-radius: var(--borda-arredondada); display: inline-block;">
+                    <strong style="color: var(--cor-destaque);">1 Pão Doce Grátis</strong><br>
+                    <small>Na sua próxima visita</small>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary color-neutra text-center padding-md margin-top-xl">
+        <p>&copy; 2025 Padaria Soares. Todos os direitos reservados.</p>
+        <p class="margin-top-xs"><a href="index.html" class="color-destaque">← Voltar à Página Inicial</a></p>
+    </footer>
+<!-- No final de CADA página HTML, substitua todo o JavaScript por: -->
+<script src="js/script.js"></script>
+</body>
+</html>

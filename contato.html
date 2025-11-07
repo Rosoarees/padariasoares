@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Padaria Soares | Fale Conosco</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <img src="imagens/Logo/Padaria-Soares.png" alt="Logotipo da Padaria Soares" class="logo-img">
+            <h1>Padaria Soares: Tradição, Sabor e Qualidade</h1>
+        </div>
+        
+        <nav aria-label="Navegação Principal do Site">
+            <ul class="nav-top">
+                <li><a href="index.html" aria-label="Voltar para a página inicial">Início</a></li>
+                <li><a href="index.html#cardapio">Cardápio</a></li>
+                <li><a href="index.html#galeria-produtos">Nossos Produtos</a></li>
+                <li><a href="index.html#sobre-nos">Nossa História</a></li>
+                <li><a href="index.html#horarios">Horários</a></li>
+            </ul>
+            <ul class="nav-bottom">
+                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="contato.html" class="active">Fale Conosco</a></li>
+                <li><a href="pedidos.html">Pedidos Especiais</a></li>
+                <li><a href="feedback.html">Deixe seu Feedback</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Fale Conosco</h2>
+                <p>Estamos aqui para ajudar! Envie sua mensagem e retornaremos em até 24 horas.</p>
+            </div>
+
+            <form class="form-padaria" id="form-contato">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome-contato" class="form-label required">Nome Completo</label>
+                        <input type="text" id="nome-contato" class="form-input" placeholder="Seu nome completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email-contato" class="form-label required">E-mail</label>
+                        <input type="email" id="email-contato" class="form-input" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone-contato" class="form-label">Telefone (Opcional)</label>
+                    <input type="tel" id="telefone-contato" class="form-input" placeholder="(11) 99999-9999">
+                    <div class="form-hint">Para contatos mais rápidos</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="assunto-contato" class="form-label required">Assunto</label>
+                    <select id="assunto-contato" class="form-select" required>
+                        <option value="">Selecione um assunto</option>
+                        <option value="informacao">📋 Informações Gerais</option>
+                        <option value="reclamacao">⚠️ Reclamação</option>
+                        <option value="sugestao">💡 Sugestão</option>
+                        <option value="elogio">⭐ Elogio</option>
+                        <option value="pedido-especial">🎂 Pedido Especial</option>
+                        <option value="parceria">🤝 Proposta de Parceria</option>
+                        <option value="trabalhe-conosco">💼 Trabalhe Conosco</option>
+                        <option value="outros">❓ Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem-contato" class="form-label required">Mensagem</label>
+                    <textarea id="mensagem-contato" class="form-textarea" rows="6" 
+                              placeholder="Descreva detalhadamente sua dúvida, sugestão ou pedido..." 
+                              minlength="10" required></textarea>
+                    <div class="char-counter"><span id="contador-caracteres">0</span>/500 caracteres</div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="index.html" class="btn-form btn-back">Cancelar</a>
+                    <button type="submit" class="btn-form btn-submit">Enviar Mensagem</button>
+                </div>
+            </form>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <h3 style="color: var(--cor-primaria); margin-bottom: 1rem;">📞 Outras Formas de Contato</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                    <div style="background: white; padding: 1.5rem; border-radius: var(--borda-arredondada); text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📱</div>
+                        <strong>WhatsApp</strong>
+                        <p style="margin: 0.5rem 0;">(11) 98765-4321</p>
+                        <a href="https://wa.me/5511987654321" class="btn btn-comprar" style="margin-top: 0.5rem;">Enviar Mensagem</a>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: var(--borda-arredondada); text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📞</div>
+                        <strong>Telefone</strong>
+                        <p style="margin: 0.5rem 0;">(11) 97070-7070</p>
+                        <a href="tel:+5511970707070" class="btn btn-comprar" style="margin-top: 0.5rem;">Ligar Agora</a>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: var(--borda-arredondada); text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
+                        <strong>E-mail</strong>
+                        <p style="margin: 0.5rem 0;">contato@padariasoares.com.br</p>
+                        <a href="mailto:contato@padariasoares.com.br" class="btn btn-comprar" style="margin-top: 0.5rem;">Enviar E-mail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary color-neutra text-center padding-md margin-top-xl">
+        <p>&copy; 2025 Padaria Soares. Todos os direitos reservados.</p>
+        <p class="margin-top-xs"><a href="index.html" class="color-destaque">← Voltar à Página Inicial</a></p>
+    </footer>
+
+    <!-- No final de CADA página HTML, substitua todo o JavaScript por: -->
+<script src="js/script.js"></script>
+</body>
+</html>

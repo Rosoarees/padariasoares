@@ -1,0 +1,40 @@
+/* ====================================
+   RESET CSS - Seletores de Elemento
+==================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #2F1B14;
+    background-color: #FFFFFF;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
