@@ -3,124 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Padaria Soares | Fale Conosco</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Contato | Padaria Soares</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> 
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
 </head>
 <body>
-    <header>
+ 
+   <a href="https://wa.me/5511987654321" class="btn-whatsapp" aria-label="Fale conosco pelo WhatsApp">
+    <img src="imagens/redesSociais/whatsapp.png" alt="WhatsApp" width="32" height="32">
+    </a>
+   
+  
+    <a href="#cabecalho-principal" class="btn-topo" aria-label="Voltar ao topo da página">
+        ↑ Topo
+    </a>
+
+  
+<div class="modal-overlay" id="modal-produto" style="display: none;">
+    <div class="modal-conteudo">
+        <button class="btn-fechar-modal" data-modal="modal-produto" aria-label="Fechar modal">×</button>
+        <h3>Detalhes do Produto</h3>
+        <div class="modal-produto-info">
+            <img src="imagens/Produtos/Pao-Frances-Tradicional.png" alt="Pão Francês Tradicional - Padaria Soares" class="modal-produto-img">
+            <div class="modal-produto-detalhes">
+                <h4 class="modal-produto-nome">Pão Francês Tradicional</h4>
+                <p class="modal-produto-descricao">Nosso clássico pão francês, crocante por fora e macio por dentro, perfeito para o café da manhã.</p>
+                <p class="modal-produto-preco">R$ 0,80 (unidade)</p>
+                <div class="modal-acoes">
+                    <div class="quantidade-selector">
+                        <button class="btn-quantidade" data-acao="diminuir">-</button>
+                        <span class="quantidade">1</span>
+                        <button class="btn-quantidade" data-acao="aumentar">+</button>
+                    </div>
+                    <button class="btn btn-comprar-modal">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-cadastro" style="display: none;">
+    <div class="modal-conteudo">
+        <button class="btn-fechar-modal" data-modal="modal-cadastro" aria-label="Fechar modal de cadastro">×</button>
+        <h3>Crie sua Conta</h3>
+        <p>Cadastre-se para receber promoções exclusivas!</p>
+        <form id="form-cadastro" class="form-padaria" novalidate>
+            <div class="form-group">
+                <label for="email-cadastro" class="form-label">Email:</label>
+                <input type="email" id="email-cadastro" class="form-input" required>
+                <div id="erro-email" class="mensagem-erro">Formato de e-mail inválido.</div>
+            </div>
+            <div class="form-group">
+                <label for="senha-cadastro" class="form-label">Senha (mín. 8 caracteres):</label>
+                <input type="password" id="senha-cadastro" class="form-input" required minlength="8">
+                <div id="forca-senha" class="form-hint"></div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-submit">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <header id="cabecalho-principal">
         <div class="header-top">
-            <img src="imagens/Logo/Padaria-Soares.png" alt="Logotipo da Padaria Soares" class="logo-img">
+            <img src="imagens/Logo/Padaria-Soares.png" alt="Logotipo da Padaria Soares: um pão artesanal com espigas de trigo e o nome da padaria" class="logo-img">
             <h1>Padaria Soares: Tradição, Sabor e Qualidade</h1>
         </div>
-        
+
         <nav aria-label="Navegação Principal do Site">
             <ul class="nav-top">
-                <li><a href="index.html" aria-label="Voltar para a página inicial">Início</a></li>
-                <li><a href="index.html#cardapio">Cardápio</a></li>
+                <li class="nav-item-com-dropdown">
+                    <a href="cardapio.html">Cardápio ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cardapio.html#paes">Pães Artesanais</a></li>
+                        <li><a href="cardapio.html#bolos">Bolos e Doces</a></li>
+                        <li><a href="cardapio.html#salgados">Salgados</a></li>
+                        <li><a href="cardapio.html#tortas">Tortas Especiais</a></li>
+                    </ul>
+                </li>
                 <li><a href="index.html#galeria-produtos">Nossos Produtos</a></li>
                 <li><a href="index.html#sobre-nos">Nossa História</a></li>
                 <li><a href="index.html#horarios">Horários</a></li>
             </ul>
             <ul class="nav-bottom">
-                <li><a href="index.html#contato">Contato</a></li>
-                <li><a href="contato.html" class="active">Fale Conosco</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="contato.html">Fale Conosco</a></li>
                 <li><a href="pedidos.html">Pedidos Especiais</a></li>
-                <li><a href="feedback.html">Deixe seu Feedback</a></li>
-                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li><a href="contato.html#feedback">Deixe seu Feedback</a></li>
+                <li><a href="index.html#modal-cadastro" id="btn-abrir-cadastro">Cadastre-se</a></li>
             </ul>
         </nav>
     </header>
 
+    <nav class="breadcrumb" aria-label="Navegação secundária">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+    <div class="sistema-busca-container">
+    <div class="campo-busca">
+        <input type="text" id="campo-busca" placeholder="Buscar produtos... (ex: pão, bolo, salgado)" 
+               aria-label="Campo de busca de produtos">
+        <button id="btn-buscar" aria-label="Buscar produtos">🔍</button>
+    </div>
+    <div id="resultados-busca" class="resultados-busca" style="display: none;"></div>
+</div>
+
+
+<div class="favoritos-flutuante" id="favoritos-flutuante">
+    <button class="btn-favoritos" id="btn-favoritos" aria-label="Ver favoritos">❤️ <span id="contador-favoritos">0</span></button>
+    <div class="lista-favoritos" id="lista-favoritos" style="display: none;"></div>
+</div>
     <main>
-        <div class="form-container">
-            <div class="form-header">
-                <h2>Fale Conosco</h2>
-                <p>Estamos aqui para ajudar! Envie sua mensagem e retornaremos em até 24 horas.</p>
+        <section id="contato" class="container">
+            <h2>Contato e Localização</h2>
+            <p>Entre em contato conosco ou venha nos visitar. Adoraríamos recebê-lo em nossa padaria!</p>
+            
+            <address>
+                <p><strong>Endereço:</strong> Rua dos Sabores, 123 - Bairro Crocância, Cidade Feliz</p>
+                <p><strong>Telefone:</strong> <a href="tel:+5511970707070" aria-label="Ligar para a Padaria Soares">(11) 97070-7070</a></p>
+                <p><strong>WhatsApp:</strong><a href="https://wa.me/5511987654321" target="_blank" rel="noopener noreferrer" aria-label="Enviar mensagem para a Padaria Soares no WhatsApp"><span>(11) 98765-4321</span></a></p>
+                <p><strong>E-mail:</strong> <a href="mailto:contato@padariasoares.com.br" aria-label="Enviar e-mail para a Padaria Soares">contato@padariasoares.com.br</a></p>
+            </address>
+            
+            <div class="mapa-container">
+                <h3>Onde nos encontrar:</h3>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.1678229202575!2d-43.4158673!3d-22.7601959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9975b94f6f2a6f%3A0xe54d89a7f0e9f0e!2sPadaria%20Soares!5e0!3m2!1spt-BR!2sbr!4v1678901234567!5m2!1spt-BR!2sbr" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Localização da Padaria Soares no Google Maps">
+                </iframe>
             </div>
-
-            <form class="form-padaria" id="form-contato">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="nome-contato" class="form-label required">Nome Completo</label>
-                        <input type="text" id="nome-contato" class="form-input" placeholder="Seu nome completo" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email-contato" class="form-label required">E-mail</label>
-                        <input type="email" id="email-contato" class="form-input" placeholder="seu.email@exemplo.com" required>
-                    </div>
-                </div>
-
+        </section>
+        <section id="feedback" class="container">
+            <h2>Deixe seu Feedback</h2>
+            <p>Sua opinião é muito importante para nós!</p>
+            <form id="form-feedback" class="form-padaria" style="max-width: 600px; margin: auto;">
                 <div class="form-group">
-                    <label for="telefone-contato" class="form-label">Telefone (Opcional)</label>
-                    <input type="tel" id="telefone-contato" class="form-input" placeholder="(11) 99999-9999">
-                    <div class="form-hint">Para contatos mais rápidos</div>
+                    <label for="feedback-texto" class="form-label">Sua mensagem:</label>
+                    <textarea id="feedback-texto" class="form-textarea" maxlength="150" placeholder="Digite sua mensagem aqui..."></textarea>
+                    <div id="feedback-contador" class="char-counter">0/150</div>
                 </div>
-
-                <div class="form-group">
-                    <label for="assunto-contato" class="form-label required">Assunto</label>
-                    <select id="assunto-contato" class="form-select" required>
-                        <option value="">Selecione um assunto</option>
-                        <option value="informacao">📋 Informações Gerais</option>
-                        <option value="reclamacao">⚠️ Reclamação</option>
-                        <option value="sugestao">💡 Sugestão</option>
-                        <option value="elogio">⭐ Elogio</option>
-                        <option value="pedido-especial">🎂 Pedido Especial</option>
-                        <option value="parceria">🤝 Proposta de Parceria</option>
-                        <option value="trabalhe-conosco">💼 Trabalhe Conosco</option>
-                        <option value="outros">❓ Outros</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="mensagem-contato" class="form-label required">Mensagem</label>
-                    <textarea id="mensagem-contato" class="form-textarea" rows="6" 
-                              placeholder="Descreva detalhadamente sua dúvida, sugestão ou pedido..." 
-                              minlength="10" required></textarea>
-                    <div class="char-counter"><span id="contador-caracteres">0</span>/500 caracteres</div>
-                </div>
-
-                <div class="form-actions">
-                    <a href="index.html" class="btn-form btn-back">Cancelar</a>
-                    <button type="submit" class="btn-form btn-submit">Enviar Mensagem</button>
-                </div>
+                <button type="submit" class="btn btn-destaque">Enviar Feedback</button>
             </form>
-
-            <div style="margin-top: 3rem; text-align: center;">
-                <h3 style="color: var(--cor-primaria); margin-bottom: 1rem;">📞 Outras Formas de Contato</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-                    <div style="background: white; padding: 1.5rem; border-radius: var(--borda-arredondada); text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📱</div>
-                        <strong>WhatsApp</strong>
-                        <p style="margin: 0.5rem 0;">(11) 98765-4321</p>
-                        <a href="https://wa.me/5511987654321" class="btn btn-comprar" style="margin-top: 0.5rem;">Enviar Mensagem</a>
-                    </div>
-                    
-                    <div style="background: white; padding: 1.5rem; border-radius: var(--borda-arredondada); text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📞</div>
-                        <strong>Telefone</strong>
-                        <p style="margin: 0.5rem 0;">(11) 97070-7070</p>
-                        <a href="tel:+5511970707070" class="btn btn-comprar" style="margin-top: 0.5rem;">Ligar Agora</a>
-                    </div>
-                    
-                    <div style="background: white; padding: 1.5rem; border-radius: var(--borda-arredondada); text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
-                        <strong>E-mail</strong>
-                        <p style="margin: 0.5rem 0;">contato@padariasoares.com.br</p>
-                        <a href="mailto:contato@padariasoares.com.br" class="btn btn-comprar" style="margin-top: 0.5rem;">Enviar E-mail</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
+<div class="cart-sidebar" id="cart-sidebar">
+        <button class="btn-fechar-menu" id="btn-fechar-carrinho" aria-label="Fechar carrinho">×</button>
+        <h3>Seu Carrinho <span id="cart-count">(0 itens)</span></h3>
+        <div id="cart-items">
+           
+            <p class="cart-vazio">Seu carrinho está vazio.</p>
+        </div>
+        <div class="cart-summary">
+            <p>Subtotal: <span id="cart-subtotal">R$ 0,00</span></p>
+            <p>Desconto: <span id="cart-discount">R$ 0,00</span></p>
+            <p>Total: <span id="cart-total">R$ 0,00</span></p>
+            <p>Pontos de Fidelidade: <span id="loyalty-points">0 pontos</span></p>
+        </div>
+        <div class="cart-actions">
+            <button class="btn btn-comprar-modal" id="btn-finalizar-compra">Finalizar Compra</button>
+            <button class="btn btn-info" id="btn-limpar-carrinho">Limpar Carrinho</button>
+        </div>
+        <div class="payment-section">
+            <h4>Pagamento</h4>
+            <div class="form-group">
+                <label for="valor-pago">Valor Pago (R$):</label>
+                <input type="number" id="valor-pago" class="form-input" step="0.01" min="0" value="0">
+            </div>
+            <p>Troco: <span id="valor-troco">R$ 0,00</span></p>
+        </div>
+        <div class="currency-converter">
+            <h4>Conversor de Moeda</h4>
+            <div class="form-group">
+                <label for="moeda-destino">Converter para:</label>
+                <select id="moeda-destino" class="form-select">
+                    <option value="USD">Dólar Americano (USD)</option>
+                    <option value="EUR">Euro (EUR)</option>
+                    <option value="GBP">Libra Esterlina (GBP)</option>
+                </select>
+            </div>
+            <p>Total em <span id="moeda-display">USD</span>: <span id="total-convertido">US$ 0,00</span></p>
+        </div>
+    </div>
 
-    <footer class="bg-primary color-neutra text-center padding-md margin-top-xl">
-        <p>&copy; 2025 Padaria Soares. Todos os direitos reservados.</p>
-        <p class="margin-top-xs"><a href="index.html" class="color-destaque">← Voltar à Página Inicial</a></p>
+  
+    <button class="btn-carrinho-flutuante" id="btn-abrir-carrinho" aria-label="Abrir carrinho de compras">
+        🛒 <span id="carrinho-flutuante-contador" class="badge-novo">0</span>
+    </button>
+    <footer class="text-center"> 
+        <p>&copy; <time datetime="2025">2025</time> Padaria Soares. Todos os direitos reservados.</p>
+        <p>Horários e promoções sujeitos a alterações. Consulte-nos para confirmar.</p>
+        <p class="margin-top-xs"><a href="#cabecalho-principal" class="color-destaque"></a></p>
     </footer>
 
-    <!-- No final de CADA página HTML, substitua todo o JavaScript por: -->
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -83,12 +83,12 @@
         <nav aria-label="Navegação Principal do Site">
             <ul class="nav-top">
                 <li class="nav-item-com-dropdown">
-                    <a href="#cardapio">Cardápio ▼</a>
+                    <a href="cardapio.html">Cardápio ▼</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#paes">Pães Artesanais</a></li>
-                        <li><a href="#bolos">Bolos e Doces</a></li>
-                        <li><a href="#salgados">Salgados</a></li>
-                        <li><a href="#tortas">Tortas Especiais</a></li>
+                        <li><a href="cardapio.html#paes">Pães Artesanais</a></li>
+                        <li><a href="cardapio.html#bolos">Bolos e Doces</a></li>
+                        <li><a href="cardapio.html#salgados">Salgados</a></li>
+                        <li><a href="cardapio.html#tortas">Tortas Especiais</a></li>
                     </ul>
                 </li>
                 <li><a href="#galeria-produtos">Nossos Produtos</a></li>
@@ -96,23 +96,21 @@
                 <li><a href="#horarios">Horários</a></li>
             </ul>
             <ul class="nav-bottom">
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="contato.html">Contato</a></li>
                 <li><a href="contato.html">Fale Conosco</a></li>
                 <li><a href="pedidos.html">Pedidos Especiais</a></li>
-                <li><a href="#feedback">Deixe seu Feedback</a></li>
-                <li><a href="#" id="btn-abrir-cadastro">Cadastre-se</a></li>
+                <li><a href="contato.html#feedback">Deixe seu Feedback</a></li>
+                <li><a href="#modal-cadastro" id="btn-abrir-cadastro">Cadastre-se</a></li>
             </ul>
         </nav>
     </header>
 
     <nav class="breadcrumb" aria-label="Navegação secundária">
         <ul>
-          
-            <li><a href="#cardapio">Cardápio</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="index.html">Home</a></li>
         </ul>
     </nav>
-    <section id="sitema-pedidos-completo" class="container">
+    <section id="sitema-pedidos-completo" class="container" style="display: none;">
         <h2>Sistema Completo de Pedidos</h2>
        
     <Div class="sistema-pedidos-container"></Div>
@@ -140,7 +138,7 @@
             <div class="hero-texto">
                 <h2>Bem-vindo à Padaria Soares</h2>
                 <p>Desde 2000, tradição e sabor em cada mordida</p>
-                <a href="#cardapio" class="btn btn-destaque">Ver Cardápio</a>
+                <a href="cardapio.html" class="btn btn-destaque">Ver Cardápio</a>
             </div>
             <img src="imagens/Ambiente/Interior-da-Padaria.png" alt="Interior aconchegante da Padaria Soares" loading="lazy">
         </section>
@@ -156,178 +154,6 @@
             </figure>
           
             <a href="#sobre-nos" class="btn btn-info margin-top">Saiba Mais sobre Nós</a>
-        </section>
-
-        <section id="cardapio" class="container">
-            <h2>Cardápio Completo da Padaria Soares</h2>
-            <p class="intro-cardapio">Descubra nossa variedade de produtos, preparados com os melhores ingredientes e receitas tradicionais.</p>
-
-         
-            <aside class="filtros-laterais">
-                <h4>Filtrar por:</h4>
-                <ul>
-                    <li><a href="#paes">Pães</a></li>
-                    <li><a href="#bolos">Bolos</a></li>
-                    <li><a href="#salgados">Salgados</a></li>
-                    <li><a href="#promocoes">Promoções</a></li>
-                </ul>
-            </aside>
-
-            <article class="categoria-produto" id="paes">
-                <h3>Pães Artesanais</h3>
-                <p>Pães frescos assados diariamente, com opções tradicionais e especiais para todos os gostos.</p>
-                <div class="table-container">
-                    <table class="tabela-com-imagens">
-                        <caption>Pães Artesanais disponíveis diariamente na Padaria Soares</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Imagem</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Descrição</th>
-                                <th scope="col">Preço</th>
-                                <th scope="col">Ação</th> 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="miniatura">
-                                    <div class="produto-card">
-                                        <img src="imagens/Produtos/pao-frances-crocante.png" alt="Pão francês tradicional crocante" class="produto-img-tabela" loading="lazy">
-                                        <span class="badge-promocao">Promoção</span>
-                                    </div>
-                                </td>
-                                <th scope="row">Pães Tradicionais</th>
-                                <td>Pão Francês Tradicional</td>
-                                <td>Nosso clássico pão francês, crocante por fora e macio por dentro</td>
-                                <td class="preco">R$ 0,80 (unidade)</td>
-                                <td><button class="btn btn-comprar" data-produto-codigo="PAO001">Comprar</button></td> 
-                            </tr>
-                            <tr class="produto-destaque"> 
-                                <td class="miniatura">
-                                    <div class="produto-card">
-                                        <img src="imagens/Produtos/Pão-de-leite-macio.png" alt="Pão de leite macio" class="produto-img-tabela" loading="lazy">
-                                        <span class="badge-novo">Novo</span>
-                                    </div>
-                                </td>
-                                <th scope="row">Pães Tradicionais</th>
-                                <td>Pão de Leite</td>
-                                <td>Massa super macia e saborosa, perfeito para o café da manhã</td>
-                                <td class="preco">R$ 6,50 (unidade)</td>
-                                <td><button class="btn btn-comprar" data-produto-codigo="PAO002">Comprar</button></td>
-                            </tr>
-                            <tr>
-                                <td class="miniatura">
-                                    <div class="produto-card">
-                                        <img src="imagens/Produtos/Pao-Integral-Graos.png" alt="Pão integral com grãos" class="produto-img-tabela" loading="lazy">
-                                    </div>
-                                </td>
-                                <th scope="row">Pães Especiais</th>
-                                <td>Pão Integral com Grãos</td>
-                                <td>Pão integral nutritivo com mix de grãos, linhaça e chia</td>
-                                <td class="preco">R$ 12,90 (400g)</td>
-                                <td><button class="btn btn-comprar" data-produto-codigo="PAO003">Comprar</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-
-            <article class="categoria-produto" id="bolos">
-                <h3>Bolos e Doces</h3>
-                <p>Delícias açucaradas para adoçar seu dia, desde os clássicos até as novidades mais irresistíveis.</p>
-                <div class="table-container">
-                    <table class="tabela-com-imagens">
-                        <caption>Bolos e Doces fresquinhos, feitos com todo o carinho</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Imagem</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Descrição</th>
-                                <th scope="col">Preço</th>
-                                <th scope="col">Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="miniatura">
-                                    <div class="produto-card">
-                                        <img src="imagens/Produtos/Bolo-de-Fuba-com-Goiabada.png" alt="Bolo de fubá com goiabada" class="produto-img-tabela" loading="lazy">
-                                        <span class="badge-promocao">-20%</span>
-                                    </div>
-                                </td>
-                                <th scope="row">Bolos</th>
-                                <td>Bolo de Fubá com Goiabada</td>
-                                <td>Bolo de fubá cremoso com recheio de goiabada cascão</td>
-                                <td class="preco">R$ 7,90 (fatia)</td>
-                                <td><button class="btn btn-comprar" data-produto-codigo="BOL001">Comprar</button></td>
-                            </tr>
-                            <tr class="produto-destaque"> 
-                                <td class="miniatura">
-                                    <div class="produto-card">
-                                        <img src="imagens/Produtos/Bolo-de-cenoura-com-chocolate.png" alt="Bolo de cenoura com chocolate" class="produto-img-tabela" loading="lazy">
-                                        <span class="badge-novo">Mais Vendido</span>
-                                    </div>
-                                </td>
-                                <th scope="row">Bolos</th>
-                                <td>Bolo de Cenoura com Chocolate</td>
-                                <td>Clássico bolo de cenoura com cobertura de chocolate</td>
-                                <td class="preco">R$ 8,50 (fatia)</td>
-                                <td><button class="btn btn-comprar" data-produto-codigo="BOL002">Comprar</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-
-            <article class="categoria-produto" id="salgados">
-                <h3>Salgados</h3>
-                <p>Opções deliciosas para o seu lanche, refeição rápida ou para compartilhar.</p>
-                <div class="table-container">
-                    <table class="tabela-com-imagens">
-                        <caption>Salgados variados, feitos na hora, da Padaria Soares</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Imagem</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Descrição</th>
-                                <th scope="col">Preço</th>
-                                <th scope="col">Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="miniatura">
-                                    <div class="produto-card">
-                                        <img src="imagens/Produtos/coxinha-frango-requeijao.png" alt="Coxinha de frango com requeijão" class="produto-img-tabela" loading="lazy">
-                                        <span class="badge-promocao">Promoção</span>
-                                    </div>
-                                </td>
-                                <th scope="row">Fritos</th>
-                                <td>Coxinha de Frango</td>
-                                <td>Massa crocante recheada com frango desfiado temperado</td>
-                                <td class="preco">R$ 5,90 (unidade)</td>
-                                <td><button class="btn btn-comprar" data-produto-codigo="SAL001">Comprar</button></td>
-                            </tr>
-                            <tr class="produto-destaque"> 
-                                <td class="miniatura">
-                                    <div class="produto-card">
-                                        <img src="imagens/Produtos/Bolinha-de-Queijo.png" alt="Bolinha de queijo" class="produto-img-tabela" loading="lazy">
-                                        <span class="badge-novo">Novo</span>
-                                    </div>
-                                </td>
-                                <th scope="row">Fritos</th>
-                                <td>Bolinha de Queijo</td>
-                                <td>Clássica bolinha de queijo crocante por fora e macia por dentro</td>
-                                <td class="preco">R$ 4,50 (unidade)</td>
-                                <td><button class="btn btn-comprar" data-produto-codigo="SAL002">Comprar</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
         </section>
 
        
@@ -494,9 +320,9 @@
             <button class="btn-fechar-menu" aria-label="Fechar menu">×</button>
             <nav>
                 <ul>
-                    <li><a href="#cardapio">Cardápio</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
                     <li><a href="#sobre-nos">Sobre Nós</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="contato.html">Contato</a></li>
                     <li><a href="#horarios">Horários</a></li>
                 </ul>
             </nav>
@@ -551,32 +377,6 @@
                     </table>
                 </div>
             </article>
-        </section>
-
-        <section id="contato" class="container">
-            <h2>Contato e Localização</h2>
-            <p>Entre em contato conosco ou venha nos visitar. Adoraríamos recebê-lo em nossa padaria!</p>
-            
-            <address>
-                <p><strong>Endereço:</strong> Rua dos Sabores, 123 - Bairro Crocância, Cidade Feliz</p>
-                <p><strong>Telefone:</strong> <a href="tel:+5511970707070" aria-label="Ligar para a Padaria Soares">(11) 97070-7070</a></p>
-                <p><strong>WhatsApp:</strong><a href="https://wa.me/5511987654321" target="_blank" rel="noopener noreferrer" aria-label="Enviar mensagem para a Padaria Soares no WhatsApp"><span>(11) 98765-4321</span></a></p>
-                <p><strong>E-mail:</strong> <a href="mailto:contato@padariasoares.com.br" aria-label="Enviar e-mail para a Padaria Soares">contato@padariasoares.com.br</a></p>
-            </address>
-            
-            <div class="mapa-container">
-                <h3>Onde nos encontrar:</h3>
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.1678229202575!2d-43.4158673!3d-22.7601959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9975b94f6f2a6f%3A0xe54d89a7f0e9f0e!2sPadaria%20Soares!5e0!3m2!1spt-BR!2sbr!4v1678901234567!5m2!1spt-BR!2sbr" 
-                    width="600" 
-                    height="450" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Localização da Padaria Soares no Google Maps">
-                </iframe>
-            </div>
         </section>
     </main>
 <div class="cart-sidebar" id="cart-sidebar">
@@ -645,19 +445,6 @@
             <button class="btn btn-comprar" id="btn-update-price">Atualizar Preço</button>
             <button class="btn btn-info" id="btn-apply-promo">Aplicar Promoção</button>
         </div>
-    </section>
-
-    <section id="feedback" class="container">
-        <h2>Deixe seu Feedback</h2>
-        <p>Sua opinião é muito importante para nós!</p>
-        <form id="form-feedback" class="form-padaria" style="max-width: 600px; margin: auto;">
-            <div class="form-group">
-                <label for="feedback-texto" class="form-label">Sua mensagem:</label>
-                <textarea id="feedback-texto" class="form-textarea" maxlength="150" placeholder="Digite sua mensagem aqui..."></textarea>
-                <div id="feedback-contador" class="char-counter">0/150</div>
-            </div>
-            <button type="submit" class="btn btn-destaque">Enviar Feedback</button>
-        </form>
     </section>
 
     <footer class="text-center"> 

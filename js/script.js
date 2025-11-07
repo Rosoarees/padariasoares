@@ -201,7 +201,10 @@ class CalculadoraPedidos {
         this.precoUnitario = 0;
         this.quantidade = 1;
         this.comEntrega = false;
-        this.inicializarCalculadoraUI();
+        // Inicializa a UI apenas se os elementos da calculadora existirem
+        if (document.getElementById('calculadora-pedidos')) {
+            this.inicializarCalculadoraUI();
+        }
     }
 
     inicializarCalculadoraUI() {
@@ -618,7 +621,10 @@ class GerenciadorArrays {
 class SistemaBusca {
     constructor() {
         this.resultados = [];
-        this.inicializarBusca();
+        // Inicializa a busca apenas se o campo de busca existir
+        if (document.getElementById('campo-busca')) {
+            this.inicializarBusca();
+        }
     }
 
     inicializarBusca() {
@@ -633,7 +639,7 @@ class SistemaBusca {
                 this.realizarBusca(campoBusca.value);
             });
             document.addEventListener('click', (e) => {
-                if (!campoBusca.contains(e.target) && !resultadosContainer.contains(e.target)) {
+                if (!campoBusca.contains(e.target) && resultadosContainer && !resultadosContainer.contains(e.target)) {
                     resultadosContainer.style.display = 'none';
                 }
             });
@@ -644,7 +650,7 @@ class SistemaBusca {
         const resultadosContainer = document.getElementById('resultados-busca');
         
         if (!termo || termo.trim() === '') {
-            resultadosContainer.style.display = 'none';
+            if (resultadosContainer) resultadosContainer.style.display = 'none';
             return;
         }
 
@@ -693,9 +699,9 @@ class SistemaBusca {
 }
 class SistemaPadaria {
     constructor() {
-        this.calculadora = new CalculadoraPedidos();
+        this.calculadora = new CalculadoraPedidos(); // Instancia sempre, mas a UI só inicializa se presente
         this.gerenciador = new GerenciadorArrays();
-        this.sistemaBusca = new SistemaBusca();
+        this.sistemaBusca = new SistemaBusca(); // Instancia sempre, mas a UI só inicializa se presente
         this.produtoFocadoIndex = -1; // Para navegação por teclado
         this.init();
     }
@@ -704,8 +710,13 @@ class SistemaPadaria {
         this.inicializarEventos();
         this.inicializarFavoritos();
         this.atualizarInterface();
-        this.inicializarContadorFeedback();
-        this.inicializarValidacaoCadastro();
+        if (document.getElementById('feedback-texto')) { // Inicializa apenas se o campo existir na página
+            this.inicializarContadorFeedback();
+        }
+        if (document.getElementById('form-cadastro')) { // Inicializa apenas se o formulário existir na página
+            this.inicializarValidacaoCadastro();
+        }
+        this.abrirModalPorHash(); // Verifica se há hash para abrir modal de cadastro
         console.log("🚀 Sistema Padaria Soares inicializado com todas as funcionalidades!");
     }
 
@@ -760,12 +771,15 @@ class SistemaPadaria {
             const produtoCodigo = botao.dataset.produtoCodigo;
             if(!produtoCodigo) return;
 
-            const btnDetalhes = document.createElement('button');
-            btnDetalhes.innerText = 'Ver Detalhes';
-            btnDetalhes.className = 'btn btn-info btn-detalhes';
-            btnDetalhes.style.marginLeft = '8px';
-            btnDetalhes.dataset.produtoCodigo = produtoCodigo;
-            botao.parentNode.insertBefore(btnDetalhes, botao.nextSibling);
+            // Previne a duplicação de botões se a função for chamada múltiplas vezes
+            if (!botao.parentNode.querySelector(`.btn-detalhes[data-produto-codigo="${produtoCodigo}"]`)) {
+                const btnDetalhes = document.createElement('button');
+                btnDetalhes.innerText = 'Ver Detalhes';
+                btnDetalhes.className = 'btn btn-info btn-detalhes';
+                btnDetalhes.style.marginLeft = '8px';
+                btnDetalhes.dataset.produtoCodigo = produtoCodigo;
+                botao.parentNode.insertBefore(btnDetalhes, botao.nextSibling);
+            }
         });
     }
     
@@ -816,7 +830,7 @@ class SistemaPadaria {
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'Enter') {
                 e.preventDefault();
-                const primeiroProduto = document.querySelector('.galeria-item .btn-comprar');
+                const primeiroProduto = document.querySelector('.galeria-item .btn-comprar'); // Considera o primeiro produto da galeria
                 if (primeiroProduto) {
                     this.handleComprarClick(primeiroProduto);
                     this.gerenciador.adicionarAlerta('Atalho! Produto adicionado ao carrinho.', 'info');
@@ -826,28 +840,36 @@ class SistemaPadaria {
             if (['ArrowRight', 'ArrowLeft'].includes(e.key) && document.querySelector('.galeria-item:focus-within')) {
                  e.preventDefault();
                 const galeriaItens = Array.from(document.querySelectorAll('.galeria-item'));
-                const currentIndex = galeriaItens.findIndex(item => item === document.activeElement);
+                const activeElement = document.activeElement;
+                const currentIndex = galeriaItens.findIndex(item => item === activeElement);
                 let proximoIndex = currentIndex;
 
-                if (e.key === 'ArrowRight') {
-                    proximoIndex = (currentIndex + 1) % galeriaItens.length;
-                } else {
-                    proximoIndex = (currentIndex - 1 + galeriaItens.length) % galeriaItens.length;
+                if (currentIndex !== -1) { // Garante que há um item focado
+                    if (e.key === 'ArrowRight') {
+                        proximoIndex = (currentIndex + 1) % galeriaItens.length;
+                    } else {
+                        proximoIndex = (currentIndex - 1 + galeriaItens.length) % galeriaItens.length;
+                    }
+                    galeriaItens[proximoIndex]?.focus();
                 }
-                
-                galeriaItens[proximoIndex]?.focus();
             }
         });
     }
     
     inicializarModals() {
-        document.getElementById('btn-abrir-cadastro')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.abrirModal('modal-cadastro');
-        });
+        const btnAbrirCadastro = document.getElementById('btn-abrir-cadastro');
+        if (btnAbrirCadastro) {
+             btnAbrirCadastro.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.abrirModal('modal-cadastro');
+            });
+        }
+       
 
         document.querySelectorAll('.btn-fechar-modal').forEach(btn => {
-            btn.addEventListener('click', () => this.fecharModal(btn.dataset.modal));
+            btn.addEventListener('click', () => {
+                this.fecharModal(btn.dataset.modal);
+            });
         });
     }
     
@@ -859,6 +881,13 @@ class SistemaPadaria {
     fecharModal(modalId) {
         const modal = document.getElementById(modalId);
         if (modal) modal.classList.remove('ativo');
+    }
+
+    // Abre o modal de cadastro se a URL contiver a hash #modal-cadastro
+    abrirModalPorHash() {
+        if (window.location.hash === '#modal-cadastro') {
+            this.abrirModal('modal-cadastro');
+        }
     }
 
     abrirModalProduto(produto) {
@@ -874,9 +903,10 @@ class SistemaPadaria {
         const quantidadeSpan = modal.querySelector('.quantidade');
         const btnComprarModal = modal.querySelector('.btn-comprar-modal');
         let quantidade = 1;
-        quantidadeSpan.textContent = quantidade;
+        if (quantidadeSpan) quantidadeSpan.textContent = quantidade;
 
         modal.querySelectorAll('.btn-quantidade').forEach(btn => {
+            // Remove listeners antigos clonando e substituindo o botão para evitar múltiplos eventos
             const newBtn = btn.cloneNode(true);
             btn.parentNode.replaceChild(newBtn, btn);
 
@@ -887,16 +917,19 @@ class SistemaPadaria {
                 } else if (acao === 'diminuir' && quantidade > 1) {
                     quantidade--;
                 }
-                quantidadeSpan.textContent = quantidade;
+                if (quantidadeSpan) quantidadeSpan.textContent = quantidade;
             });
         });
 
-        const newBtnComprar = btnComprarModal.cloneNode(true);
-        btnComprarModal.parentNode.replaceChild(newBtnComprar, btnComprarModal);
-        newBtnComprar.addEventListener('click', () => {
-            this.adicionarAoCarrinho(produto, quantidade);
-            this.fecharModal('modal-produto');
-        });
+        // Remove listener antigo do botão de comprar do modal clonando e substituindo
+        if (btnComprarModal) {
+            const newBtnComprar = btnComprarModal.cloneNode(true);
+            btnComprarModal.parentNode.replaceChild(newBtnComprar, btnComprarModal);
+            newBtnComprar.addEventListener('click', () => {
+                this.adicionarAoCarrinho(produto, quantidade);
+                this.fecharModal('modal-produto');
+            });
+        }
 
         this.abrirModal('modal-produto');
     }
@@ -921,11 +954,13 @@ class SistemaPadaria {
     }
 
     adicionarBotoesFavorito() {
+        // Seleciona todos os botões de comprar, incluindo os das tabelas e da galeria
         document.querySelectorAll('.btn-comprar').forEach(botao => {
             const produtoCodigo = botao.dataset.produtoCodigo;
             const produto = estadoPadaria.produtosDisponiveis.find(p => p.codigo === produtoCodigo);
             
-            if (produto && !botao.parentNode.querySelector('.btn-favorito')) {
+            // Verifica se o botão de favorito já existe para este produto
+            if (produto && !botao.parentNode.querySelector(`.btn-favorito[data-codigo="${produto.codigo}"]`)) {
                 const btnFavorito = document.createElement('button');
                 btnFavorito.className = 'btn-favorito';
                 btnFavorito.innerHTML = this.gerenciador.isFavorito(produto.codigo) ? '❤️' : '🤍';
@@ -935,6 +970,7 @@ class SistemaPadaria {
                 btnFavorito.style.fontSize = '1.2rem';
                 btnFavorito.style.cursor = 'pointer';
                 btnFavorito.style.marginLeft = '0.5rem';
+                btnFavorito.dataset.codigo = produto.codigo; // Adiciona data-codigo para identificação
                 btnFavorito.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -949,12 +985,16 @@ class SistemaPadaria {
     toggleFavorito(produto, botao) {
         if (this.gerenciador.isFavorito(produto.codigo)) {
             this.gerenciador.removerDosFavoritos(produto.codigo);
-            botao.innerHTML = '🤍';
-            botao.title = 'Adicionar aos favoritos';
+            if(botao) {
+                botao.innerHTML = '🤍';
+                botao.title = 'Adicionar aos favoritos';
+            }
         } else {
             this.gerenciador.adicionarAosFavoritos(produto);
-            botao.innerHTML = '❤️';
-            botao.title = 'Remover dos favoritos';
+            if(botao) {
+                botao.innerHTML = '❤️';
+                botao.title = 'Remover dos favoritos';
+            }
         }
         this.atualizarContadorFavoritos();
     }
@@ -992,8 +1032,11 @@ class SistemaPadaria {
                 this.gerenciador.removerDosFavoritos(codigo);
                 this.atualizarListaFavoritos();
                 this.atualizarContadorFavoritos();
-                document.querySelectorAll('.btn-favorito').forEach(bf => bf.remove());
-                this.adicionarBotoesFavorito(); 
+                // Atualiza o estado dos botões de favorito em todas as páginas
+                document.querySelectorAll(`.btn-favorito[data-codigo="${codigo}"]`).forEach(bf => {
+                    bf.innerHTML = '🤍';
+                    bf.title = 'Adicionar aos favoritos';
+                });
             });
         });
     }
@@ -1013,6 +1056,9 @@ class SistemaPadaria {
                     display.style.color = 'inherit';
                 }
             });
+             // Inicializa o contador com o valor atual ao carregar a página
+            const initialCount = input.value.length;
+            display.textContent = `${initialCount}/${maxLength}`;
         }
     }
 
@@ -1027,8 +1073,9 @@ class SistemaPadaria {
 
         emailInput.addEventListener('keyup', () => {
             const emailValido = FormatadorDados.validarEmail(emailInput.value);
-            erroEmail.style.display = emailValido ? 'none' : 'block';
+            if(erroEmail) erroEmail.style.display = emailValido ? 'none' : 'block';
             emailInput.classList.toggle('invalido', !emailValido);
+            emailInput.classList.toggle('valido', emailValido);
         });
 
         senhaInput.addEventListener('keyup', () => {
@@ -1040,23 +1087,25 @@ class SistemaPadaria {
             if (senha.match(/[0-9]/)) forca++;
             if (senha.match(/[^a-zA-Z0-9]/)) forca++;
 
-            forcaSenha.style.display = 'block';
-            switch (forca) {
-                case 0:
-                case 1:
-                case 2:
-                    forcaSenha.textContent = 'Força: Fraca';
-                    forcaSenha.style.color = 'red';
-                    break;
-                case 3:
-                    forcaSenha.textContent = 'Força: Média';
-                    forcaSenha.style.color = 'orange';
-                    break;
-                case 4:
-                case 5:
-                    forcaSenha.textContent = 'Força: Forte';
-                    forcaSenha.style.color = 'green';
-                    break;
+            if(forcaSenha) {
+                forcaSenha.style.display = 'block';
+                switch (forca) {
+                    case 0:
+                    case 1:
+                    case 2:
+                        forcaSenha.textContent = 'Força: Fraca';
+                        forcaSenha.style.color = 'red';
+                        break;
+                    case 3:
+                        forcaSenha.textContent = 'Força: Média';
+                        forcaSenha.style.color = 'orange';
+                        break;
+                    case 4:
+                    case 5:
+                        forcaSenha.textContent = 'Força: Forte';
+                        forcaSenha.style.color = 'green';
+                        break;
+                }
             }
         });
 
@@ -1066,10 +1115,18 @@ class SistemaPadaria {
             const emailValido = FormatadorDados.validarEmail(emailInput.value);
             const senhaForte = senhaInput.value.length >= 8;
 
+            // Trigger validation display on submit
+            emailInput.classList.toggle('invalido', !emailValido);
+            emailInput.classList.toggle('valido', emailValido);
+            if(erroEmail) erroEmail.style.display = emailValido ? 'none' : 'block';
+
+
             if (emailValido && senhaForte) {
                 this.gerenciador.adicionarAlerta('Cadastro realizado com sucesso!', 'sucesso');
                 this.fecharModal('modal-cadastro');
                 form.reset();
+                if(forcaSenha) forcaSenha.style.display = 'none'; // Clear strength message
+                emailInput.classList.remove('invalido', 'valido'); // Clear validation styles
             } else {
                 this.gerenciador.adicionarAlerta('Por favor, corrija os erros no formulário.', 'erro');
             }
@@ -1114,7 +1171,9 @@ class SistemaPadaria {
         }
 
         const calculoTotal = this.calcularTotalCarrinho();
-        const valorPago = parseFloat(document.getElementById("valor-pago").value) || 0;
+        const valorPagoInput = document.getElementById("valor-pago");
+        const valorPago = parseFloat(valorPagoInput ? valorPagoInput.value : "0") || 0;
+        
         if (valorPago < calculoTotal.total) {
             this.gerenciador.adicionarAlerta(`Valor pago insuficiente. Total: ${FormatadorDados.formatarMoeda(calculoTotal.total)}`, 'erro');
             return;
@@ -1129,7 +1188,7 @@ class SistemaPadaria {
         this.gerenciador.registrarPedido(pedido);
         this.limparCarrinho();
         this.fecharCarrinho();
-        document.getElementById("valor-pago").value = "0";
+        if (valorPagoInput) valorPagoInput.value = "0";
     }
 
     calcularTotalCarrinho() {
@@ -1151,7 +1210,8 @@ class SistemaPadaria {
 
     calcularTrocoCarrinho() {
         const total = this.calcularTotalCarrinho().total;
-        const valorPago = parseFloat(document.getElementById("valor-pago").value) || 0;
+        const valorPagoInput = document.getElementById("valor-pago");
+        const valorPago = parseFloat(valorPagoInput ? valorPagoInput.value : "0") || 0;
         return Math.max(0, valorPago - total);
     }
 
@@ -1162,17 +1222,23 @@ class SistemaPadaria {
 
     calcularTroco() {
         const troco = this.calcularTrocoCarrinho();
-        document.getElementById("valor-troco").textContent = FormatadorDados.formatarMoeda(troco);
+        const valorTrocoElement = document.getElementById("valor-troco");
+        if (valorTrocoElement) valorTrocoElement.textContent = FormatadorDados.formatarMoeda(troco);
     }
 
     atualizarConversaoMoeda() {
         const selectMoeda = document.getElementById("moeda-destino");
+        if (!selectMoeda) return;
+
         const total = this.calcularTotalCarrinho().total;
         const moeda = selectMoeda.value;
         const valorConvertido = this.calculadora.converterMoeda(total, moeda);
         const simboloMoeda = { 'USD': 'US$', 'EUR': '€', 'GBP': '£' }[moeda] || 'R$';
-        document.getElementById("moeda-display").textContent = moeda;
-        document.getElementById("total-convertido").textContent = `${simboloMoeda} ${valorConvertido.toFixed(2)}`;
+        
+        const moedaDisplayElement = document.getElementById("moeda-display");
+        const totalConvertidoElement = document.getElementById("total-convertido");
+        if (moedaDisplayElement) moedaDisplayElement.textContent = moeda;
+        if (totalConvertidoElement) totalConvertidoElement.textContent = `${simboloMoeda} ${valorConvertido.toFixed(2)}`;
     }
 
     atualizarCarrinhoUI() {
@@ -1229,6 +1295,7 @@ class SistemaPadaria {
     atualizarInterface() {
         this.atualizarCarrinhoUI();
         this.atualizarContadorFavoritos();
+        this.adicionarBotoesFavorito(); // Garante que os botões de favorito são adicionados/atualizados
     }
 }
 
